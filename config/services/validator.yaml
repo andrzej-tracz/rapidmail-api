@@ -1,0 +1,7 @@
+services:
+
+  App\Infrastructure\Validator\Constraints\UniqueInValidator:
+      class: App\Infrastructure\Validator\Constraints\UniqueInValidator
+      arguments: ['@Doctrine\ORM\EntityManagerInterface']
+      tags:
+          - { name: validator.constraint_validator }

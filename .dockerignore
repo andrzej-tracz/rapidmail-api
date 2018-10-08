@@ -1,0 +1,11 @@
+docker
+.idea
+node_modules
+.git
+.gitignore
+dc.sh
+var/log
+var/sessions
+var/cache
+vendor
+.env

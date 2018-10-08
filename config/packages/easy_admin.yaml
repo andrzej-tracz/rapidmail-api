@@ -1,0 +1,94 @@
+easy_admin:
+  site_name: '<img src="http://maesto.net/bundles/themeflowpage/images/maesto-logo.svg" />'
+  design:
+    brand_color: '#2d2f4d'
+    color_scheme: 'dark'
+
+    menu:
+      - entity: 'Account'
+        label: 'Accounts'
+        icon: 'users'
+        children:
+          - { entity: 'Account', icon: 'users', label: 'Accounts' }
+          - { entity: 'Profile', icon: 'users', label: 'Profiles' }
+          - { entity: 'User', icon: 'user', label: 'Users' }
+          - { entity: 'Roles', icon: 'user', label: 'Roles' }
+
+      - label: 'Auth'
+        icon: 'lock'
+        children:
+          - { entity: 'Client', icon: 'users', label: 'OAuth Clients' }
+
+      - label: 'Templates'
+        icon: 'lock'
+        children:
+          - { entity: 'Template', icon: 'users', label: 'Templates' }
+          - { entity: 'PurchasedTemplate', icon: 'users', label: 'Purchased Template' }
+          - { entity: 'Layout', icon: 'users', label: 'Layout' }
+          - { entity: 'TemplateSection', icon: 'users', label: 'TemplateSection' }
+
+      - label: 'Projects'
+        icon: 'lock'
+        children:
+         - { entity: 'Projects', icon: 'users', label: 'Projects' }
+
+      - label: 'Campaigns'
+        icon: 'lock'
+        children:
+         - { entity: 'Campaign', icon: 'users', label: 'Campaign' }
+
+  formats:
+      date: 'd M Y'
+      time: 'H:i'
+      datetime: 'd M Y H:i:s'
+      number: '%.2f'
+
+  entities:
+    Account:
+      class: App\Domain\Account\Account
+      list:
+          fields: ['id', 'name', 'purchasedTemplates', 'profiles', 'createdAt', 'creator']
+
+    Profile:
+      class: App\Domain\Profile\Profile
+      list:
+          fields: ['id', 'email', 'user', 'account', 'createdAt']
+
+    User:
+      class: App\Domain\User\User
+      list:
+          fields: ['id', 'email', 'isConfirmed', 'createdAt']
+
+    Roles:
+      class: App\Domain\User\Role
+
+    Client:
+      class: App\Infrastructure\Auth\Client
+      list:
+          fields: ['id', 'user', 'randomId', 'secret' ]
+
+    Template:
+      controller: App\UI\Http\Admin\TemplateController
+      class: App\Domain\Template\Template
+      form:
+        fields:
+          - { property: 'layout' }
+          - { property: 'name' }
+          - { property: 'isPublic' }
+          - { property: 'isActive' }
+          - { property: 'archiveFile', type: 'vich_file' }
+
+    PurchasedTemplate:
+      class: App\Domain\Template\PurchasedTemplate
+
+    Layout:
+      class: App\Domain\Template\Layout
+
+    TemplateSection:
+      class: App\Domain\Template\TemplateSection
+
+    Projects:
+      class:  App\Domain\Project\Project
+
+    Campaign:
+      class:  App\Domain\Campaign\Campaign

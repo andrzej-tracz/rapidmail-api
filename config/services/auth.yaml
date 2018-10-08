@@ -1,0 +1,12 @@
+services:
+  App\Infrastructure\Auth\EventListener\OAuthEventListener:
+      class: App\Infrastructure\Auth\EventListener\OAuthEventListener
+      tags:
+          - { name: kernel.event_listener, event: fos_oauth_server.pre_authorization_process, method: onPreAuthorizationProcess }
+          - { name: kernel.event_listener, event: fos_oauth_server.post_authorization_process, method: onPostAuthorizationProcess }
+
+  App\Infrastructure\Doctrine\EventListener\CurrentContextListener:
+      autowire: true
+      class: App\Infrastructure\Doctrine\EventListener\CurrentContextListener
+      tags:
+          - { name: kernel.event_listener, event: kernel.request, method: onKernelRequest, priority: 1 }

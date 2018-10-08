@@ -1,0 +1,12 @@
+App\Domain\Subscriber\SubscriberList:
+  attributes:
+    id:
+        groups: ['api_read']
+    name:
+        groups: ['api_read', 'subscriber_list_create']
+    subscribersCount:
+        groups: ['api_read']
+    createdAt:
+        groups: ['api_read']
+    updatedAt:
+        groups: ['api_read']

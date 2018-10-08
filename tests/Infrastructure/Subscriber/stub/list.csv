@@ -1,0 +1,8 @@
+name,surname,email
+John,Fooo,dev@dev.local
+John,Hello,dev2@dev.local
+John,Work,invalid-email
+John,Hello,dev2@dev.local
+John,Work,not-valid-email
+Kam,Sue,not-valid-email
+,,valid@dev.local

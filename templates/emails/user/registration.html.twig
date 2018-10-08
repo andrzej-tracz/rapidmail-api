@@ -1,0 +1,11 @@
+<html>
+<body>
+<h1>Witaj</h1>
+<p>
+    Dziękujemy za rejestracje, potwierdź swoje konto klikając w poniższy link:
+</p>
+<a href="{{ frontend_base_url }}/account/confirmation/{{ user.confirmationToken }}">
+    Potwierdzam konto
+</a>
+</body>
+</html>

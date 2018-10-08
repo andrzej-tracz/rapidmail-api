@@ -1,0 +1,38 @@
+App\Domain\Account\Account:
+  properties:
+    name:
+      attributes:
+        swagger_context:
+          type: string
+          enum: ['one', 'two']
+          example: one
+
+  attributes:
+    normalization_context:
+      groups:
+        - api_read
+  collectionOperations:
+    get:
+      pagination_enabled: false
+      swagger_context:
+          summary: Fetches list of all accounts associated with authorized user
+          description: >
+            It's possible to fetch all necessary details about account connected with authorized user
+          parameters: ~
+
+  itemOperations:
+    get: ~
+    register:
+      route_name: account_register
+      defaults:
+        _api_receive: false
+      denormalization_context:
+        groups:
+          - account_register
+    current_account_show:
+      route_name: api_account_show_current
+    update:
+      route_name: api_account_update
+      denormalization_context:
+        groups:
+          - account_update

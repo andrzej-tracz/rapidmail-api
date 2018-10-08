@@ -1,0 +1,26 @@
+monolog:
+    handlers:
+        main:
+            type: rotating_file
+            path: "%kernel.logs_dir%/%kernel.environment%.log"
+            level: debug
+            max_files: 5
+            channels: ["!event"]
+        # uncomment to get logging in your browser
+        # you may have to allow bigger header sizes in your Web server configuration
+        firephp:
+            type: firephp
+            level: info
+        chromephp:
+            type: chromephp
+            level: info
+        dev_info:
+            path: "%kernel.logs_dir%/%kernel.environment%-info.log"
+            type: rotating_file
+            level: info
+            max_files: 5
+            handler: nested
+        console:
+            type:   console
+            process_psr_3_messages: false
+            channels: ["!event", "!doctrine", "!console"]

@@ -1,0 +1,20 @@
+services:
+
+    App\Infrastructure\Campaign\EventSubscriber\CampaignSubscriber:
+        autowire: true
+        tags:
+            - { name: doctrine.event_subscriber, connection: default }
+
+    App\Infrastructure\Campaign\Repository\CampaignRepository:
+        class: App\Infrastructure\Campaign\Repository\CampaignRepository
+        factory: ['@doctrine', 'getRepository']
+        arguments: ['App\Domain\Campaign\Campaign']
+
+    App\Infrastructure\Campaign\Repository\MessageRepository:
+        class: App\Infrastructure\Campaign\Repository\MessageRepository
+        factory: ['@doctrine', 'getRepository']
+        arguments: ['App\Domain\Campaign\Message']
+
+#    App\Infrastructure\Campaign\Contracts\TransportInterface:
+#      class: App\Infrastructure\Campaign\Transport\SwitfMailTransport
+#      autowire: true

@@ -1,0 +1,8 @@
+App\Domain\Account\Account:
+  attributes:
+    id:
+        groups: ['api_read', 'user_details']
+    name:
+        groups: ['api_read', 'user_details', 'account_register', 'account_update']
+    email:
+        groups: ['api_read', 'user_details', 'account_register', 'account_details']

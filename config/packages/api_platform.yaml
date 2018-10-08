@@ -1,0 +1,40 @@
+api_platform:
+
+    collection:
+        pagination:
+            enabled: true
+
+    allow_plain_identifiers: true
+
+    mapping:
+        paths: ['%kernel.project_dir%/config/api_platform']
+
+    oauth:
+        enabled: true
+        clientId: 'random'
+        clientSecret: 'secret'
+
+        type: 'oauth2'
+        flow: 'resource_owner'
+
+        # The oauth token url.
+        tokenUrl: '/oauth/v2/token'
+
+        # The oauth authentication url.
+        authorizationUrl: '/oauth/v2/auth'
+
+    http_cache:
+        # Automatically generate etags for API responses.
+        etag: false
+
+        # Default value for the response max age.
+        #max_age: ~
+
+        # Default value for the response shared (proxy) max age.
+        #shared_max_age: ~
+
+        # Default values of the "Vary" HTTP header.
+        vary: ['*']
+
+        # To make all responses public by default.
+        public: false

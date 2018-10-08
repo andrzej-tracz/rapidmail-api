@@ -1,0 +1,16 @@
+App\Domain\Profile\Profile:
+  attributes:
+    id:
+      groups: ['api_read', 'user_details']
+    name:
+      groups: ['api_read', 'user_details']
+    email:
+      groups: ['api_read', 'user_details']
+    firstName:
+     groups: ['api_read', 'user_details']
+    lastName:
+     groups: ['api_read', 'user_details']
+    position:
+     groups: ['api_read', 'user_details']
+    account:
+      groups: ['api_read', 'user_details']

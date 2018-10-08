@@ -1,0 +1,18 @@
+App\Domain\User\User:
+  attributes:
+    id:
+        groups: ['api_relation', 'users_list', 'user_details']
+    username:
+        groups: ['list', 'api_relation', 'subscriber', 'user_details', 'user_create']
+    email:
+        groups: ['list', 'api_relation', 'subscriber', 'user_details', 'user_create']
+    planPassword:
+        groups: ['user_create']
+    isConfirmed:
+        groups: ['user_details', 'user_create', 'api_user_confirmation']
+    activeProfile:
+        groups: ['user_details']
+    permissions:
+        groups: ['user_details']
+    profiles:
+        groups: ['user_details']

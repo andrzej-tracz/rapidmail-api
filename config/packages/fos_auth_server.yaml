@@ -1,0 +1,10 @@
+fos_oauth_server:
+    db_driver:           orm
+    client_class:        App\Infrastructure\Auth\Client
+    access_token_class:  App\Infrastructure\Auth\AccessToken
+    refresh_token_class: App\Infrastructure\Auth\RefreshToken
+    auth_code_class:     App\Infrastructure\Auth\AuthCode
+    service:
+      user_provider: App\Infrastructure\User\Provider\UserProvider
+      options:
+          access_token_lifetime: 30

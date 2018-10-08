@@ -1,0 +1,30 @@
+App\Domain\Project\Project:
+    attributes:
+        normalization_context: {'groups': [list]}
+        order:
+            id: DESC
+
+    collectionOperations:
+        get: ~
+        post:
+            denormalization_context: {'groups': [save]}
+            normalization_context: {'groups': [details]}
+
+    itemOperations:
+        get:
+            normalization_context:
+                groups:
+                    - api_read
+                    - api_relation
+                    - details
+        put:
+            denormalization_context: {'groups': [save]}
+            normalization_context:
+                groups:
+                    - api_read
+                    - api_relation
+                    - details
+        delete: ~
+
+        send_preview:
+            route_name: api_project_send_preview

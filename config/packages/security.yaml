@@ -1,0 +1,68 @@
+
+security:
+    # https://symfony.com/doc/current/security.html#where-do-users-come-from-user-providers
+    providers:
+        main:
+          id: App\Infrastructure\User\Provider\UserProvider
+
+    encoders:
+        App\Domain\User\User: bcrypt
+
+    access_decision_manager:
+        strategy: unanimous
+        allow_if_all_abstain: false
+
+    firewalls:
+        dev:
+            pattern: ^/(_(profiler|wdt)|css|images|js)/
+            security: false
+
+        collect:
+            pattern: ^/collect
+            security: false
+
+        oauth_token:
+            pattern:    ^/oauth/v2/token
+            security:   false
+
+        account_register:
+            pattern:    ^/api/(account/register|register/confirm)
+            security:   false
+
+        api_docs:
+            pattern:    ^/api/docs
+            security:   false
+
+        api_demo:
+            pattern:    ^/api/demo
+            security:   false
+
+        api:
+            provider: main
+            pattern:   ^/api+
+            fos_oauth: true
+            stateless: true
+            anonymous: false
+
+        web:
+            pattern: ^/
+            anonymous: ~
+            provider: main
+            form_login:
+              login_path: login
+              check_path: login
+            logout:
+              path: /logout
+
+    # Easy way to control access for large sections of your site
+    # Note: Only the *first* access control that matches will be used
+    access_control:
+      - { path: ^/admin, roles: [ ROLE_SUPER_ADMIN ] }
+      - { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+      - { path: ^/authorize/envato, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+      - { path: ^/authorize/envato/check, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+      - { path: ^/api/demo/template/details*, roles: [IS_AUTHENTICATED_ANONYMOUSLY] }
+      - { path: ^/api/account/register, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+      - { path: ^/api/campaigns, roles: ROLE_SUPER_ADMIN }
+      - { path: ^/api/subscriber, roles: ROLE_SUPER_ADMIN }
+      - { path: ^/, roles: [ IS_AUTHENTICATED_ANONYMOUSLY ] }

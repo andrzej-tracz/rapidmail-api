@@ -1,0 +1,33 @@
+dtc_queue:
+    # For full configuration options see:
+    #   https://github.com/mmucklo/DtcQueueBundle/blob/master/Resources/doc/full-configuration.md
+    manager:
+        # This parameter is required and should typically be set to one of:
+        #   [odm|orm|beanstalkd|rabbit_mq|redis]
+        job: orm
+    timings:
+        # Set this to true to record job timing history in a separate table
+        #  (note: for beanstalkd|rabbit_mq|redis, job_timing or run needs to
+        #   be set to one of orm|odm under the manager section)
+        record: false
+    redis:
+      predis:
+        connection_parameters:
+          scheme: tcp
+          host: redis
+          port: 6379
+          path: ~
+          database: ~
+          password: ~
+          async: false
+          persistent: false
+          timeout: 5.0
+          read_write_timeout: 10
+          iterable_multibulk: false
+          throw_errors: true
+    priority:
+        max: 255
+        direction: desc
+    admin:
+        # chartjs is used to render the job timings graph in the admin section
+        chartjs: 'https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.bundle.min.js'

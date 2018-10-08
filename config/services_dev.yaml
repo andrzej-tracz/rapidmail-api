@@ -1,0 +1,7 @@
+services:
+    _defaults:
+        public: true
+
+    App\Infrastructure\Campaign\Contracts\TransportInterface:
+      class: App\Infrastructure\Campaign\Transport\FilesystemTransport
+      autowire: true

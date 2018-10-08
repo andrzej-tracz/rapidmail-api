@@ -1,0 +1,21 @@
+App\Domain\Campaign\Campaign:
+    attributes:
+        normalization_context: {'groups': [list, api_read]}
+        order:
+            id: DESC
+    collectionOperations:
+        get: ~
+        post:
+            denormalization_context: {'groups': [campaign_save]}
+            normalization_context: {'groups': [api_read]}
+    itemOperations:
+        get:
+            normalization_context:
+                groups:
+                    - api_read
+        put:
+            denormalization_context: {'groups': [campaign_save, campaign_update]}
+            normalization_context:
+                groups:
+                    - api_read
+        delete: ~

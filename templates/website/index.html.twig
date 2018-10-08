@@ -1,0 +1,42 @@
+{% trans_default_domain 'dashboard' %}
+{% extends 'website/base.html.twig' %}
+
+{% block title %}Hello World !!{% endblock %}
+
+{% block body %}
+<style>
+    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+</style>
+
+<div class="example-wrapper">
+    <h1>✅ {{ 'Welcome' | trans }}! ✅</h1>
+
+    <div>
+        {% if is_granted('ROLE_USER') %}
+            [{{ app.user.email }}]
+            <a href="{{ url('logout') }}" class="button button-primary">
+                Wyloguj
+            </a>
+        {% else %}
+            <a class="button button-primary" href="{{ path('connect_envato') }}">Sign In With Envato</a>
+        {% endif %}
+    </div>
+
+    Developer area - coming soon!
+
+    <div>
+        {% if is_granted('ROLE_SUPER_ADMIN') %}
+            <a href="{{ url('admin') }}" class="button button-primary">
+                Admin
+            </a>
+        {% endif %}
+
+        {% if projects is defined %}
+            {%  for project in projects %}
+                {{ project |raw }}
+            {% endfor %}
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

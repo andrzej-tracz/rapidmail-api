@@ -1,0 +1,27 @@
+services:
+    _defaults:
+        autowire: true
+        autoconfigure: true
+        public: false
+
+    App\Infrastructure\Template\Repository\TemplateRepository:
+        class: App\Infrastructure\Template\Repository\TemplateRepository
+        factory: ['@doctrine', 'getRepository']
+        arguments: ['App\Domain\Template\Template']
+
+    App\Infrastructure\Template\Repository\PurchasedTemplateRepository:
+        class: App\Infrastructure\Template\Repository\PurchasedTemplateRepository
+        factory: ['@doctrine', 'getRepository']
+        arguments: ['App\Domain\Template\PurchasedTemplate']
+
+    App\Infrastructure\Template\DataProvider\TemplateItemDataProvider:
+        class: App\Infrastructure\Template\DataProvider\TemplateItemDataProvider
+        public: false
+        tags:
+            -  { name: 'api_platform.item_data_provider' }
+
+    App\Infrastructure\Template\DataProvider\PurchasedTemplatesCollectionDataProvider:
+        class: App\Infrastructure\Template\DataProvider\PurchasedTemplatesCollectionDataProvider
+        public: false
+        tags:
+            -  { name: 'api_platform.collection_data_provider' }

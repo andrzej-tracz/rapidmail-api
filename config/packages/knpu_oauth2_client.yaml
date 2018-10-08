@@ -1,0 +1,13 @@
+knpu_oauth2_client:
+    clients:
+        # will create service: "knpu.oauth2.client.foo_bar_oauth"
+        # an instance of: KnpU\OAuth2ClientBundle\Client\OAuth2Client
+        envato:
+            type: generic
+            provider_class: App\Infrastructure\Auth\OAuth\EnvatoOAuthProvider
+            client_class: App\Infrastructure\Auth\OAuth\EnvatoClient
+
+            client_id: '%env(ENVATO_CLIENT_ID)%'
+            client_secret: '%env(ENVATO_CLIENT_SECRET)%'
+            redirect_route: connect_envato_check
+            redirect_params: {}

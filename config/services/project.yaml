@@ -1,0 +1,10 @@
+services:
+    _defaults:
+        autowire: true
+        autoconfigure: true
+        public: false
+
+    App\Infrastructure\Project\Repository\ProjectRepository:
+        class: App\Infrastructure\Project\Repository\ProjectRepository
+        factory: ['@doctrine', 'getRepository']
+        arguments: ['App\Domain\Project\Project']

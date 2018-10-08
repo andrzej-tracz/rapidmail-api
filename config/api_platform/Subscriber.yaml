@@ -1,0 +1,11 @@
+App\Domain\Subscriber\Subscriber:
+    attributes:
+        normalization_context:
+            groups:
+                - api_read
+                - subscriber
+        denormalization_context:
+            groups:
+                - subscriber_create
+        order:
+            id: DESC

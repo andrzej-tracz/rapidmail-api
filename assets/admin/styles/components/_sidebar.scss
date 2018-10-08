@@ -1,0 +1,25 @@
+.main-sidebar {
+  background-color: #3b4151;
+
+  .sidebar-menu {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+
+    > li {
+      &:hover {
+        background-color: #313745;
+      }
+    }
+
+    a {
+      display: block;
+      padding: 16px 25px;
+      color: white;
+      outline: 0;
+      font-size: 13px;
+      text-transform: uppercase;
+      line-height: 16px;
+    }
+  }
+}

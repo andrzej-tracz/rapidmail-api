@@ -1,0 +1,40 @@
+#!/bin/sh
+set -e
+
+role=${CONTAINER_ROLE:-app}
+env=${APP_ENV:-production}
+
+php -v
+
+mkdir -p var/log
+mkdir -p var/sessions
+mkdir -p var/cache
+
+if [ "$role" = "QUEUE" ]; then
+
+    echo "Queue role"
+    while [ true ]
+    do
+        echo "Spawn new queue process..."
+        php bin/console dtc:queue:run --max-count 100 >> /var/www/var/log/output.log 2>&1
+        sleep 30
+    done
+
+elif [ "$role" = "SCHEDULER" ]; then
+
+    echo "Scheduler role"
+    while [ true ]
+    do
+        echo "Run scheduler..."
+        php bin/console scheduler:execute >> /var/www/var/log/output.log 2>&1
+        sleep 60
+    done
+
+else
+    echo "APP role"
+    php bin/console doctrine:migrations:migrate -n -vvv
+    chown -R www-data:www-data var
+    ls -la var
+    exec "$@"
+fi
+

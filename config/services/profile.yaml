@@ -1,0 +1,10 @@
+services:
+    _defaults:
+        autowire: true
+        autoconfigure: true
+        public: false
+
+    App\Infrastructure\Profile\Repository\ProfileRepository:
+        class: App\Infrastructure\Profile\Repository\ProfileRepository
+        factory: ['@doctrine', 'getRepository']
+        arguments: ['App\Domain\Profile\Profile']

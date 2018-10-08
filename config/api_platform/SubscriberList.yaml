@@ -1,0 +1,21 @@
+App\Domain\Subscriber\SubscriberList:
+  properties:
+    subscribers:
+      subresource:
+        resourceClass: App\Domain\Subscriber\Subscriber
+
+  attributes:
+    normalization_context:
+      groups:
+        - api_read
+    denormalization_context:
+      groups:
+        - subscriber_list_create
+    order:
+        id: DESC
+
+  collectionOperations:
+    get: ~
+    post: ~
+    import_csv:
+      route_name: api_subscriber_list_import_csv

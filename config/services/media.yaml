@@ -1,0 +1,8 @@
+services:
+
+    App\Infrastructure\Media\MediaEncoder:
+        public: true
+        autowire: true
+        class: App\Infrastructure\Media\MediaEncoder
+        arguments:
+            $path: '%media_public_path%'

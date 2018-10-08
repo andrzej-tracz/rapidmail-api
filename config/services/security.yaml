@@ -1,0 +1,13 @@
+services:
+
+    Symfony\Bridge\Doctrine\Security\User\UserLoaderInterface:
+      alias: App\Infrastructure\User\Repository\UserRepository
+
+    FOS\OAuthServerBundle\Model\ClientManagerInterface:
+      alias: fos_oauth_server.client_manager.default
+
+    fos_oauth_server.client_manager.default:
+      class: App\Infrastructure\Auth\Manager\ClientManager
+      arguments:
+        $em: '@fos_oauth_server.entity_manager'
+        $class: '%fos_oauth_server.model.client.class%'

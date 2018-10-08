@@ -1,0 +1,25 @@
+App\Domain\Template\Template:
+    attributes:
+        pagination_enabled: false
+        denormalization_context: {'groups': []}
+        normalization_context: {'groups': [details]}
+
+    collectionOperations:
+        get:
+            normalization_context: {'groups': [list]}
+
+    itemOperations:
+        get:
+            route_name: api_template_details
+        get_demo:
+            route_name: api_template_demo_details
+        activate:
+            route_name: api_template_activate
+
+App\Domain\Template\PurchasedTemplate:
+    attributes:
+        pagination_enabled: false
+        normalization_context: {'groups': [list]}
+
+    itemOperations:
+        get: ~

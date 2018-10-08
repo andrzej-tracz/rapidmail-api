@@ -1,0 +1,48 @@
+App\Domain\Template\Template:
+    attributes:
+        id:
+            groups: ['list', 'details']
+        name:
+            groups: ['list', 'details']
+        isActive:
+            groups: ['list', 'details']
+        isPublic:
+            groups: ['details']
+        layout:
+            groups: ['details']
+        sections:
+            groups: ['details']
+
+App\Domain\Template\Layout:
+    attributes:
+        id:
+            groups: ['details']
+        name:
+            groups: ['details']
+        header:
+            groups: ['details']
+        footer:
+            groups: ['details']
+
+App\Domain\Template\TemplateSection:
+    attributes:
+        id:
+            groups: ['details']
+        name:
+            groups: ['details']
+        contents:
+            groups: ['details']
+        thumbnail:
+            groups: ['details']
+
+
+App\Domain\Template\PurchasedTemplate:
+    attributes:
+        template:
+            groups: ['list']
+        purchasedBy:
+            groups: ['list']
+        createdAt:
+            groups: ['list']
+        updatedAt:
+            groups: ['list']

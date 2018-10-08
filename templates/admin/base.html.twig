@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>{% block title %}{{ 'Admin' | trans }}!{% endblock %}</title>
+        <link rel="stylesheet" href="{{ asset('build/admin/css/app.css') }}" />
+        {% block stylesheets %}{% endblock %}
+    </head>
+    <body>
+        <div class="wrapper">
+            <div class="sidebar">
+                <ul class="_navigation">
+                    <li>
+                        <a href="{{ path('admin_index') }}">Dashboard</a>
+                    </li>
+                    <li>
+                        <a href="{{ path('admin_oauth_clients_index') }}">OAuth</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="content">
+                {% block body %}{% endblock %}
+            </div>
+        </div>
+        {% block javascripts %}{% endblock %}
+    </body>
+</html>

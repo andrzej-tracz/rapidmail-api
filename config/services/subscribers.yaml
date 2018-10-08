@@ -1,0 +1,7 @@
+services:
+
+    App\Infrastructure\Subscriber\Repository\SubscriberRepository:
+        class: App\Infrastructure\Subscriber\Repository\SubscriberRepository
+        factory: ['@doctrine', 'getRepository']
+        arguments: ['App\Domain\Subscriber\Subscriber']
+

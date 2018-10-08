@@ -1,0 +1,49 @@
+App\Domain\User\User:
+  attributes:
+    normalization_context:
+      groups:
+        - user_details
+    denormalization_context:
+      groups:
+        - user_create
+
+  collectionOperations:
+    get:
+      normalization_context:
+        groups:
+          - api_read
+          - user_details
+          - users_list
+    post:
+      route_name: api_user_post
+      denormalization_context:
+        groups:
+          - user_create
+
+  itemOperations:
+    get: ~
+    put: ~
+    api_user_confirmation:
+      route_name: api_user_confirmation
+      defaults:
+        _api_receive: false
+      denormalization_context:
+        groups:
+          - api_user_confirmation
+      normalization_context:
+        groups:
+          - api_user_confirmation
+    user_me:
+      route_name: api_users_me
+      normalization_context:
+        groups:
+          - api_read
+          - user_details
+    api_profile_set_current:
+      route_name: api_profile_set_current
+      normalization_context:
+        groups:
+          - api_read
+          - user_details
+      defaults:
+        _api_receive: false

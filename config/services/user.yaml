@@ -1,0 +1,21 @@
+services:
+    _defaults:
+        autowire: true
+        autoconfigure: true
+        public: false
+
+    App\Infrastructure\User\Repository\UserRepository:
+        class: App\Infrastructure\User\Repository\UserRepository
+        factory: ['@doctrine', 'getRepository']
+        arguments: ['App\Domain\User\User']
+
+    App\Infrastructure\User\Provider\UserCollectionDataProvider:
+        class: App\Infrastructure\User\Provider\UserCollectionDataProvider
+        public: false
+        tags:
+            -  { name: 'api_platform.collection_data_provider' }
+
+    App\Infrastructure\Doctrine\Extension\CurrentUserExtension:
+        tags:
+            - { name: api_platform.doctrine.orm.query_extension.collection, priority: 10 }
+            - { name: api_platform.doctrine.orm.query_extension.item }

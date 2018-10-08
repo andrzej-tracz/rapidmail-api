@@ -1,0 +1,18 @@
+App\Domain\Subscriber\Subscriber:
+  attributes:
+    id:
+        groups: ['api_read']
+    name:
+        groups: ['api_read', 'subscriber_create']
+    surname:
+        groups: ['api_read', 'subscriber_create']
+    email:
+        groups: ['api_read', 'subscriber_create']
+    subscribersList:
+        groups: ['subscriber_create']
+    user:
+        groups: ['api_read']
+    createdAt:
+        groups: ['api_read']
+    updatedAt:
+        groups: ['api_read']

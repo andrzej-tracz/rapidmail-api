@@ -1,0 +1,16 @@
+App\Domain\Project\Project:
+    attributes:
+        id:
+            groups: ['list', 'api_read']
+        name:
+            groups: ['list', 'api_read', 'save']
+        contents:
+            groups: ['details', 'save']
+        template:
+            groups: ['details', 'save']
+        user:
+            groups: ['details']
+        createdAt:
+            groups: ['list', 'api_read']
+        updatedAt:
+            groups: ['list', 'api_read']

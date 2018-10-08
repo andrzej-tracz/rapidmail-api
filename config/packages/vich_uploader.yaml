@@ -1,0 +1,6 @@
+vich_uploader:
+    db_driver: orm
+
+    mappings:
+        template_archive:
+            upload_destination: '%upload_templates_path%'

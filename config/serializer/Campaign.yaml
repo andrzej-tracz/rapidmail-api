@@ -1,0 +1,42 @@
+App\Domain\Campaign\Campaign:
+    attributes:
+        id:
+            groups: ['list', 'api_read']
+        name:
+            groups: ['list', 'api_read', 'campaign_save', 'campaign_update']
+        status:
+            groups: ['list', 'api_read', 'campaign_update']
+        title:
+            groups: ['api_read', 'campaign_save']
+        preheader:
+            groups: ['api_read', 'campaign_save']
+        fromName:
+            groups: ['api_read', 'campaign_save']
+        fromEmail:
+            groups: ['api_read', 'campaign_save']
+        replyTo:
+            groups: ['api_read', 'campaign_save']
+        receiversList:
+            groups: ['api_read', 'campaign_save']
+        project:
+            groups: ['api_read', 'campaign_save']
+        isScheduled:
+            groups: ['api_read']
+        sendingStartsAt:
+            groups: ['api_read',]
+        sendingEndsAt:
+            groups: ['api_read']
+        account:
+            groups: ['api_read', 'list']
+        queuedMessageCount:
+            groups: ['api_read', 'list']
+        sentMessageCount:
+            groups: ['api_read', 'list']
+        totalMessageCount:
+            groups: ['api_read', 'list']
+        sendingProgress:
+            groups: ['api_read', 'list']
+        createdAt:
+            groups: ['list', 'api_read']
+        updatedAt:
+            groups: ['list', 'api_read']
